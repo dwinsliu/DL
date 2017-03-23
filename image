@@ -1,0 +1,13 @@
+ （1）计算每个像素的R\G\B之和分布，并保存到一临时内存块中。
+
+for (Y = 0; Y < Height; Y++)
+{
+    Pointer = bmp.Pointer + Y * Stride;
+    for(X = 0; X < Width; X++)
+    {
+        Sum = (short)(*(Pointer) + *(Pointer + 1) + *(Pointer + 2));    // R+G+B
+        HistRGB[Sum]++;
+        *SumP = (short)Sum;
+        Pointer += 3;
+        SumP++;
+    }
